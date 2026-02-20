@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_daily_production_form" model="ir.ui.view">
+        <field name="name">daily.production.form</field>
+        <field name="model">daily.production</field>
+        <field name="arch" type="xml">
+            <form string="Daily Production">
+                <header>
+                    <button name="action_confirm" string="Confirm" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_done" string="Mark as Done" type="object" class="btn-success" invisible="state != 'confirmed'"/>
+                    <button name="action_draft" string="Reset to Draft" type="object" invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Production Info">
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="site_id"/>
+                            <field name="shift"/>
+                            <field name="supervisor_id"/>
+                            <field name="weather"/>
+                        </group>
+                        <group string="Volume">
+                            <field name="volume_target"/>
+                            <field name="volume_actual"/>
+                            <field name="achievement"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_daily_production_tree" model="ir.ui.view">
+        <field name="name">daily.production.tree</field>
+        <field name="model">daily.production</field>
+        <field name="arch" type="xml">
+            <tree string="Daily Production">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="site_id"/>
+                <field name="shift"/>
+                <field name="supervisor_id"/>
+                <field name="volume_target"/>
+                <field name="volume_actual"/>
+                <field name="achievement"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_daily_production" model="ir.actions.act_window">
+        <field name="name">Daily Production</field>
+        <field name="res_model">daily.production</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

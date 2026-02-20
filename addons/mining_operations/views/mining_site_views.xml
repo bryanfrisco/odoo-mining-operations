@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mining_site_form" model="ir.ui.view">
+        <field name="name">mining.site.form</field>
+        <field name="model">mining.site</field>
+        <field name="arch" type="xml">
+            <form string="Mining Site">
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="active,inactive,maintenance"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Site Information">
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="mineral_type"/>
+                            <field name="status"/>
+                        </group>
+                        <group string="Details">
+                            <field name="location"/>
+                            <field name="area_hectare"/>
+                            <field name="responsible_id"/>
+                            <field name="date_start"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mining_site_tree" model="ir.ui.view">
+        <field name="name">mining.site.tree</field>
+        <field name="model">mining.site</field>
+        <field name="arch" type="xml">
+            <tree string="Mining Sites">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="mineral_type"/>
+                <field name="location"/>
+                <field name="area_hectare"/>
+                <field name="responsible_id"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_mining_site" model="ir.actions.act_window">
+        <field name="name">Mining Sites</field>
+        <field name="res_model">mining.site</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

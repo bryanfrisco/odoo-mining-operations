@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mining_site,mining.site,model_mining_site,,1,1,1,1
+access_heavy_equipment,heavy.equipment,model_heavy_equipment,,1,1,1,1
+access_daily_production,daily.production,model_daily_production,,1,1,1,1
